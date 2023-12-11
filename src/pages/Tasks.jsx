@@ -5,7 +5,7 @@ import Task from "../components/Task";
 import SearchBar from "../components/SearchBar";
 
 const Tasks = () => {
-  const { tasks, filterTasksByTitle } = useTask();
+  const { tasks } = useTask();
   const [search, setSearch] = useState("");
 
   // Add Sorting (default, priority, complexity, date) and Filtering (tags)
