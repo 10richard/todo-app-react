@@ -18,7 +18,7 @@ const Tasks = () => {
   return (
     <div className="flex flex-col items-center gap-5 my-16">
       <SearchBar handleSearch={setSearch} />
-      {filteredTasks.map((task) => (
+      {filteredTasks?.map((task) => (
         <Task key={task.id} task={task} />
       ))}
       <Link
