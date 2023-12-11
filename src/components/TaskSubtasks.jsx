@@ -19,7 +19,7 @@ const TaskSubtasks = ({ task, subtasks, completeSubtask }) => {
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
-                stroke="currentColor"
+                stroke={s.isCompleted ? "white" : "black"}
                 className="w-6 h-6"
               >
                 <path
