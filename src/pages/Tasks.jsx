@@ -13,7 +13,7 @@ const Tasks = () => {
 
   const handleFilter = (tag) => {};
 
-  const filteredTasks = tasks.filter((t) => t.title.includes(search));
+  const filteredTasks = tasks?.filter((t) => t.title.includes(search));
 
   return (
     <div className="flex flex-col items-center gap-5 my-16">
