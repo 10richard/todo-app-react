@@ -10,7 +10,7 @@ export function useTask() {
 }
 
 export const TaskProvider = ({ children }) => {
-  const storedTasks = JSON.parse(localStorage.getItem("tasks", []));
+  const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
   const [tasks, setTasks] = useState(storedTasks);
   const navigate = useNavigate();
 
