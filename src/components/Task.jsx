@@ -3,6 +3,8 @@ import { useTask } from "../contexts/taskContext";
 import TaskTags from "./TaskTags";
 import TaskLevels from "./TaskLevels";
 import TaskDueDate from "./TaskDueDate";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 const Task = ({ task }) => {
   const { completeTask, checkDueDate, getCompletedSubtasksPercentage } =
@@ -78,13 +80,23 @@ const Task = ({ task }) => {
           </svg>
         </button>
       </div>
-      <div
-        className="border-4 rounded-full absolute right-5 bottom-10 w-12 h-12 flex justify-center items-center"
-        style={{
-          borderColor: "conic-gradient(red)",
-        }}
-      >
-        <p className="font-semibold text-xs">{percentCompleted}</p>
+      <div className="absolute right-8 bottom-10 w-11 h-11">
+        <CircularProgressbar
+          value={percentCompleted}
+          text={`${percentCompleted}%`}
+          styles={{
+            path: {
+              stroke: normalColor,
+            },
+            trail: {
+              stroke: lightColor,
+            },
+            text: {
+              fill: normalColor,
+              fontSize: "25px",
+            },
+          }}
+        />
       </div>
     </div>
   );

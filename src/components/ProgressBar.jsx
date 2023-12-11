@@ -2,7 +2,7 @@ import { useTask } from "../contexts/taskContext";
 
 const ProgressBar = ({ subtasks, color }) => {
   const { getCompletedSubtasksPercentage } = useTask();
-  const percentCompleted = getCompletedSubtasksPercentage(subtasks);
+  const percentCompleted = `${getCompletedSubtasksPercentage(subtasks)}%`;
 
   return (
     <div>

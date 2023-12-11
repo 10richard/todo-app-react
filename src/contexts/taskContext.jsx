@@ -130,13 +130,13 @@ export const TaskProvider = ({ children }) => {
   };
 
   const getCompletedSubtasksPercentage = (subtasks) => {
-    if (subtasks === undefined || subtasks.length == 0) return "0%";
+    if (subtasks === undefined || subtasks.length == 0) return "0";
 
     const completedCount = subtasks.filter(
       (s) => s.isCompleted === true
     ).length;
 
-    return `${Math.floor((completedCount / subtasks.length) * 100)}%`;
+    return `${Math.floor((completedCount / subtasks.length) * 100)}`;
   };
 
   return (
