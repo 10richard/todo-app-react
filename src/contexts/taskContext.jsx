@@ -66,13 +66,6 @@ export const TaskProvider = ({ children }) => {
     navigate("/");
   };
 
-  const filterTasksByTitle = (search) => {
-    if (!search) return tasks;
-
-    const filteredTasks = tasks.filter((t) => t.title.includes(search));
-    return filteredTasks;
-  };
-
   const completeTask = (task) => {
     setTasks((tasks) =>
       tasks.map((t) =>
@@ -145,7 +138,6 @@ export const TaskProvider = ({ children }) => {
         tasks,
         addTask,
         editTask,
-        filterTasksByTitle,
         completeTask,
         completeSubtask,
         repeatSubtasks,
