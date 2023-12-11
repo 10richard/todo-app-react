@@ -1,6 +1,3 @@
-// Search bar that filters out based on task titles
-// use onChange={(e) => filterTasks(e.target.value)} with input
-
 const SearchBar = ({ handleSearch }) => {
   return (
     <div className="flex max-w-[500px] relative w-5/6">
