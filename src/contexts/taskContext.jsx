@@ -140,6 +140,23 @@ export const TaskProvider = ({ children }) => {
     return [...new Set(uniqueTags)];
   };
 
+  const sortTasks = (tasks, sort) => {
+    let sortOrder = tasks;
+
+    if (sort[1] === "Date") {
+      sortOrder = tasks.sort(
+        (a, b) => Date.parse(b.dueDate) - Date.parse(a.dueDate)
+      );
+    } else if (sort[1] === "Priority") {
+      sortOrder = tasks.sort((a, b) => b.priorityLevel - a.priorityLevel);
+    } else if (sort[1] === "Complexity") {
+      sortOrder = tasks.sort((a, b) => b.complexityLevel - a.complexityLevel);
+    }
+
+    sort[0] === "Ascending" ? sortOrder : sortOrder.reverse();
+    return sortOrder;
+  };
+
   return (
     <TaskContext.Provider
       value={{
@@ -154,6 +171,7 @@ export const TaskProvider = ({ children }) => {
         checkDueDate,
         getCompletedSubtasksPercentage,
         getTaskTags,
+        sortTasks,
       }}
     >
       {children}
