@@ -132,6 +132,14 @@ export const TaskProvider = ({ children }) => {
     return `${Math.floor((completedCount / subtasks.length) * 100)}`;
   };
 
+  const getTaskTags = () => {
+    const uniqueTags = tasks
+      .filter((t) => t.tags)
+      .map((t) => t.tags)
+      .flat();
+    return [...new Set(uniqueTags)];
+  };
+
   return (
     <TaskContext.Provider
       value={{
@@ -145,6 +153,7 @@ export const TaskProvider = ({ children }) => {
         getTask,
         checkDueDate,
         getCompletedSubtasksPercentage,
+        getTaskTags,
       }}
     >
       {children}
