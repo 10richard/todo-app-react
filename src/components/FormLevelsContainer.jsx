@@ -14,9 +14,6 @@ const FormLevelsContainer = ({ category, handleChange, value }) => {
                 : "bg-[#0d99ff1a] bg-opacity-10"
             }`}
             type="button"
-            // style={{
-            //   backgroundColor: value === level ? "#0D99FF" : "",
-            // }}
             onClick={() => handleChange(level)}
           >
             {level}
