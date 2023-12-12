@@ -10,12 +10,20 @@ const Tasks = () => {
   const { tasks, getTaskTags, sortTasks } = useTask();
   const [search, setSearch] = useState("");
   const [sortOpt, setSortOpt] = useState("Default");
-  const [tagOpt, setTagOpt] = useState([]);
+  const [filteredTags, setFilteredTags] = useState([]);
 
   const tagOpts = getTaskTags();
 
+  const filterTaskByTag = (task) => {
+    if (filteredTags === undefined || filteredTags.length == 0) return true;
+
+    return task.tags.some((tag) => filteredTags.includes(tag));
+  };
+
   const filteredTasks = sortTasks(
-    tasks?.filter((t) => t.title.includes(search) && !t.tags.includes(tagOpt)),
+    tasks
+      ?.filter((t) => t.title.includes(search))
+      .filter((t) => filterTaskByTag(t)),
     sortOpt.split(" ")
   );
 
@@ -24,7 +32,11 @@ const Tasks = () => {
       <SearchBar handleSearch={setSearch} />
       <div className="flex gap-14">
         <TaskSort handleOpt={setSortOpt} currentOpt={sortOpt} />
-        <TaskTagsFilter opts={tagOpts} handleCheck={setTagOpt} />
+        <TaskTagsFilter
+          opts={tagOpts}
+          setTags={setFilteredTags}
+          filteredTags={filteredTags}
+        />
       </div>
       {filteredTasks?.map((task) => (
         <Task key={task.id} task={task} />
